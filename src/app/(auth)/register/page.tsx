@@ -40,7 +40,7 @@ export default function RegisterPage() {
       });
 
       if (signInRes?.error) {
-        setError(signInRes.error);
+        setError("Account created but sign-in failed. Try logging in.");
       } else {
         router.push("/dashboard");
         router.refresh();

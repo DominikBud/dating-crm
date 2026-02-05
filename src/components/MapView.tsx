@@ -27,6 +27,15 @@ function MapInner({ contacts }: { contacts: Contact[] }) {
 
   useEffect(() => {
     async function loadMap() {
+      // Load Leaflet CSS dynamically
+      if (!document.querySelector('link[href*="leaflet"]')) {
+        const link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.href =
+          "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
+        document.head.appendChild(link);
+      }
+
       const [reactLeaflet, L] = await Promise.all([
         import("react-leaflet"),
         import("leaflet"),
